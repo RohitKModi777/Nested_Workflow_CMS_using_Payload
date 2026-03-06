@@ -1,0 +1,13 @@
+﻿baecdb265f38913343095de1895996bc6b9d0c80 updated gitignore so node_modules and env vars don't get pushed
+6dafb06e343243919d31e633e1cc1fff75ac4a30 added detailed readme with architecture breakdown and demo instructions
+80c715490e9b0c2ff9a2430f9ac11d0cdb7d0d00 overhauled the global UI with custom glassmorphism styles so everything looks super modern
+c61dafd14dd9ba434552fcf928696cf502c111b9 developed a custom React WorkflowPanel to show dynamic step progress in the admin UI
+2f2b30ca7481422e4a1af17f4cd473c3151a6c7f wrote a custom workflow plugin to dynamically watch collections without hardcoding their names
+2e08f4b120e8f7dbf8e10931cdeb6f0ebc67e3e1 built custom REST APIs so i can interact with workflows outside the admin panel
+d38249e5dc49cb04b7a5740bbb7075ce9e21b135 implemented a robust workflow engine with condition checks, simulated emails and SLAs
+8cd6600f9dbe964b7dd858c306389aebbdb35830 created collections for Blog, Contracts, Users and the core Workflow tracking schemas
+62c1385535ffeef116fd60848bc5967390e26a7b built the central payload cms config and added a seed script to create demo users and workflows
+f94cd6a7a66a1a93bcbb895c1fb3f842f78a6f0a configured testing framework to make sure contract workflows pass correctly
+23276d27d61af75d9e40489317d795c56872be17 included docker configurations for easy local mongo and payload setup
+0e1b9942418cef27a1014dfa5b13850552e2001f setup typescript, eslint and nextjs configs for cleaner code structure
+3cd6bc7cf7c5264493fa12f6029195d92d4b3e99 added core project dependencies and package locks so the project runs correctly
