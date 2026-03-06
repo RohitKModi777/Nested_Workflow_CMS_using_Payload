@@ -1,0 +1,135 @@
+/* Premium Global Overrides for Payload Admin UI */
+
+html[data-theme='dark'] {
+  body {
+    background: linear-gradient(135deg, #09090b 0%, #020617 100%) !important;
+    background-attachment: fixed !important;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    font-size: 16px !important;
+  }
+
+  /* Increase typography generally over the app */
+  h1,
+  h2,
+  h3,
+  h4,
+  .form-field,
+  .btn,
+  .nav__link,
+  .collection-list td {
+    font-size: 1.05rem !important;
+  }
+
+  /* Core Structure - Glassmorphism */
+  .nav {
+    background: rgba(9, 9, 11, 0.4) !important;
+    backdrop-filter: blur(16px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .app-header {
+    background: rgba(9, 9, 11, 0.5) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .template-default {
+    background: transparent !important;
+  }
+
+  /* Form Wrappers & Collection Lists */
+  .collection-list,
+  .form,
+  .render-fields {
+    background: rgba(20, 27, 45, 0.4) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Table Customization */
+  table {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  th,
+  td {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  tr:hover {
+    background: rgba(255, 255, 255, 0.02) !important;
+  }
+
+  /* Button Elevations */
+  .btn {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .btn--primary {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  .btn--primary:hover {
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4) !important;
+    transform: translateY(-1px);
+  }
+
+  .btn--secondary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cbd5e1 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Inputs Customization */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    color: white !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+    outline: none !important;
+  }
+
+  /* Dropdowns */
+  .react-select__control {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+  }
+
+  .react-select__menu {
+    background: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .react-select__option {
+    background: transparent !important;
+  }
+
+  .react-select__option--is-focused {
+    background: rgba(99, 102, 241, 0.2) !important;
+  }
+}
