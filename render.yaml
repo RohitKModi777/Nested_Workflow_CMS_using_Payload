@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: workflow-cms
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter          # Change to 'free' if you want the free tier (sleeps after 15 min)
+    region: oregon         # Options: oregon, frankfurt, singapore, ohio
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: DATABASE_URL
+        sync: false        # Must be set manually in Render dashboard
+      - key: PAYLOAD_SECRET
+        sync: false        # Must be set manually in Render dashboard
+      - key: PAYLOAD_PUBLIC_SERVER_URL
+        sync: false        # Set to your Render service URL, e.g. https://workflow-cms.onrender.com
