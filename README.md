@@ -207,35 +207,40 @@ The `npm run seed` command provisions the following test accounts:
 
 ---
 
-## Deployment Guide (Vercel)
+## Deployment Guide (Render)
 
-### Option A: Vercel + MongoDB Atlas (Recommended)
+This application is configured to be deployed on **Render** using a native Docker environment. This is the most reliable way to run a Next.js + Payload CMS application.
 
-1. **Create a MongoDB Atlas cluster** ([free tier](https://www.mongodb.com/cloud/atlas)):
-   - Sign up → Create a free M0 cluster.
-   - Database Access: Create a user.
-   - Network Access: Add IP `0.0.0.0/0` (allow all so Vercel can connect).
-   - Get the connection string: `mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net/workflow-cms`
+### 1. Preparation
+1. **Push your code to GitHub** (public or private repository).
+2. **MongoDB Atlas**: Ensure you have a MongoDB Atlas connection string (`mongodb+srv://...`). Make sure your Atlas Network Access allows connections from anywhere (`0.0.0.0/0`).
 
-2. **Push to GitHub** (keep it as a private repository).
+### 2. Deploy to Render
+The repository includes a `render.yaml` Blueprint file for automated setup.
 
-3. **Import to Vercel:**
-   - Go to Vercel → New Project → Import your repo.
-   - Framework preset should auto-detect **Next.js**.
+1. Go to [Render Dashboard](https://dashboard.render.com).
+2. Click **New > Web Service**.
+3. Connect your GitHub repository.
+4. Render will automatically detect the `docker` runtime from the repository.
+5. In the **Environment** section, Render will prompt you to enter values for:
+   - `DATABASE_URL`: Your MongoDB Atlas connection string.
+   - `PAYLOAD_SECRET`: A secure random string (e.g., generated via `openssl rand -hex 32`).
+   - `PAYLOAD_PUBLIC_SERVER_URL`: Once your service is created, Render will assign a URL like `https://workflow-cms-xyz.onrender.com`. Paste that exact URL here.
+6. Click **Create Web Service**.
 
-4. **Set Environment Variables in Vercel:**
-   ```env
-   DATABASE_URL=mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net
-   PAYLOAD_SECRET=<your_secure_random_string>
-   ```
+### 3. Post-Deployment Updates
+If you skipped setting `PAYLOAD_PUBLIC_SERVER_URL` during creation:
+1. Copy the generated URL from the top of your Render service page.
+2. Go to the **Environment** tab on the left sidebar.
+3. Add the `PAYLOAD_PUBLIC_SERVER_URL` variable.
+4. Render will automatically redeploy the application with the new variable.
 
-5. **Deploy!** Vercel builds the Next.js/Payload bundle automatically.
+Once deployed, visit `https://YOUR_ONRENDER_URL/admin` to log into your Payload dashboard.
 
-6. **Post-deploy:** Visit your Vercel URL `/admin/first-register` to create the initial admin, or run a seed script remotely if configured.
+---
 
-### Option B: Docker (Self-Hosted)
-
-A `Dockerfile` and `docker-compose.yml` are included.
+### Local Docker Testing
+A `Dockerfile` and `docker-compose.yml` are included if you want to test the production build locally.
 
 ```bash
 docker-compose up --build
