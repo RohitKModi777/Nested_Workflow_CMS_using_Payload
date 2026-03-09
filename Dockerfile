@@ -8,14 +8,9 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy lockfiles and install with pnpm
-COPY package.json pnpm-lock.yaml* package-lock.json* yarn.lock* ./
-RUN \
-  if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+# Copy lockfiles and install with npm
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # ── Build ───────────────────────────────────────────────────────────────────
 FROM base AS builder
@@ -25,12 +20,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN \
-  if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f yarn.lock ]; then yarn run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN npm run build
 
 # ── Production image ─────────────────────────────────────────────────────────
 FROM base AS runner
