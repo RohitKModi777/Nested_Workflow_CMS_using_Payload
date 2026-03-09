@@ -1,7 +1,5 @@
 # 🔄 Dynamic Workflow Management System — Payload CMS
 
-**WeframeTech Backend Hiring Task – Advanced Payload CMS Challenge**
-
 A fully dynamic, reusable multi-stage approval workflow engine built inside **Payload CMS v3** with TypeScript, MongoDB, and custom React admin components.
 
 ---
@@ -20,10 +18,7 @@ A fully dynamic, reusable multi-stage approval workflow engine built inside **Pa
 ---
 
 ## Challenge Execution Overview
-
-This project successfully implements all core and bonus requirements of the **WeframeTech Backend Developer Recruitment Task**:
-
-1. ✅ **Dynamic Workflow Engine (Core & Bonus):** Workflows can be created via the Admin UI, assigned to roles/users, with conditional field evaluations (e.g., `amount > 10000`). Nested/bonus branching between outcomes (`onApprove` / `onReject`) is supported.
+1. ✅ **Dynamic Workflow Engine:** Workflows can be created via the Admin UI, assigned to roles/users, with conditional field evaluations (e.g., `amount > 10000`). Nested/bonus branching between outcomes (`onApprove` / `onReject`) is supported.
 2. ✅ **Dynamic Injection into Admin UI:** A custom React component (`WorkflowPanel`) is injected into the edit view of watched collections, displaying progress, logs, and inline action buttons.
 3. ✅ **Audit Trail Collection:** A strictly immutable `WorkflowLogs` collection records every action (who, what, when, comments).
 4. ✅ **Custom Plugin (Core & Bonus):** A custom Payload plugin automatically hooks into target collections without hardcoding their names. It evaluates step conditions, triggers SLA escalations (bonus - running every 15 minutes), and simulates email notifications.
@@ -230,10 +225,8 @@ The `npm run seed` command provisions the following test accounts:
 
 4. **Set Environment Variables in Vercel:**
    ```env
-   DATABASE_URL=mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net/workflow-cms
+   DATABASE_URL=mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net
    PAYLOAD_SECRET=<your_secure_random_string>
-   PAYLOAD_PUBLIC_SERVER_URL=https://<your-project-name>.vercel.app
-   NEXT_PUBLIC_SERVER_URL=https://<your-project-name>.vercel.app
    ```
 
 5. **Deploy!** Vercel builds the Next.js/Payload bundle automatically.
